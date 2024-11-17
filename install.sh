@@ -1,12 +1,13 @@
 #!/bin/sh
 
 BINARY='/usr/local/bin'
+APP=dateseq
 
-echo "Building dateseq"
-go build dateseq.go
+echo "Building $APP"
+go build -ldflags="-s -w" $APP.go
 
-echo "Installing dateseq to $BINARY"
-install -v dateseq $BINARY
+echo "Installing $APP to $BINARY"
+install $APP $BINARY
 
 echo "Removing the build"
-rm dateseq
+rm $APP
